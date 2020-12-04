@@ -32,6 +32,7 @@ class Migration(migrations.Migration):
             ],
             options={
                 'db_table': 'app_user',
+                'verbose_name': 'Utilisateur', 'verbose_name_plural': 'Utilisateurs',
             },
             managers=[
                 ('objects', django.contrib.auth.models.UserManager()),
