@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'app',
+    'system',
 ]
 
 MIDDLEWARE = [
@@ -87,6 +89,8 @@ DATABASES = {
         }
     }
 }
+
+AUTH_USER_MODEL='app.User'
 
 
 # Password validation
