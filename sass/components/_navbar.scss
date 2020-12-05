@@ -1,0 +1,41 @@
+$nav-color: #FFF;
+$nav-color-hover-base: #5a5a5a;
+$nav-color-hover: calc(#{$nav-color}-#{$nav-color-hover-base});
+
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+}
+
+.navbar-dark {
+  background-color: #0f0f0f;
+  color: #FFF;
+}
+
+.navbar-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FFF;
+  text-decoration: none;
+}
+
+.nav-items {
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-item {
+  list-style: none;
+}
+
+.nav-link {
+  font-size: 1rem;
+  font-weight: bold;
+  color: $nav-color;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: darken($nav-color, 30%);
+}
