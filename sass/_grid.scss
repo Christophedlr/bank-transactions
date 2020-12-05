@@ -3,3 +3,14 @@
   max-width: 95%;
   margin-left: 2%;
 }
+
+@mixin make-col($grid-columns) {
+  @for $i from 1 through $grid-columns {
+    .col-#{$i} {
+      flex: 0 0 (100%/$grid-columns)*$i;
+      max-width: (100%/$grid-columns)*$i;
+    }
+  }
+}
+
+@include make-col(12)
