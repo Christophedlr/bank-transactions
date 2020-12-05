@@ -1,0 +1,34 @@
+{% load static %}
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'app/css/global.css' %}" type="text/css">
+    {% block stylesheets %}{% endblock %}
+    <title>{% block title %}{% endblock %} - Bank Transactions</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="navbar navbar-dark">
+                <a href="#" class="navbar-title">Navbar</a>
+                <div>
+                <ul class="nav-items">
+                    <li class="nav-item"><a href="#" class="nav-link">Accueil</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Connexion</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Inscription</a></li>
+                </ul>
+                </div>
+            </nav>
+        </header>
+
+        {% block body %}
+        {% endblock %}
+    </div>
+
+    {% block javascripts %}{% endblock %}
+</body>
+</html>
