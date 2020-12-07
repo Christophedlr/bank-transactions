@@ -1,0 +1,22 @@
+.ico img {
+  fill: currentColor;
+  vertical-align: middle;
+}
+
+.ico-user-navbar {
+   width: 16px;
+   fill: $nav-color;
+ }
+
+.ico-user-navbar:hover {
+  fill: darken($nav-color, 30%);
+}
+
+.ico-user-register-navbar {
+  width: 24px;
+  fill: $nav-color;
+}
+
+.ico-user-register-navbar:hover {
+  fill: darken($nav-color, 30%);
+}

@@ -15,11 +15,25 @@
         <header>
             <nav class="navbar navbar-dark">
                 <a href="#" class="navbar-title">Navbar</a>
-                <div>
+                <div class="col-1">
                 <ul class="nav-items">
                     <li class="nav-item"><a href="#" class="nav-link">Accueil</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Connexion</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Inscription</a></li>
+                </ul>
+                </div>
+                <div class="col-offset-8 col-2">
+                <ul class="nav-items">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link ico">
+                            <img src="{% static 'app/images/icons/user.svg' %}" alt="" class="ico ico-user-navbar">
+                            Connexion
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link ico">
+                            <img src="{% static 'app/images/icons/user_register.svg' %}" alt="" class="ico ico-user-register-navbar">
+                            Inscription
+                        </a>
+                    </li>
                 </ul>
                 </div>
             </nav>
@@ -29,6 +43,8 @@
         {% endblock %}
     </div>
 
+    <script src="{% static 'app/js/jquery-3.5.1.min.js' %}" type="application/javascript"></script>
+    <script src="{% static 'app/js/icons.js' %}" type="application/javascript"></script>
     {% block javascripts %}{% endblock %}
 </body>
 </html>
