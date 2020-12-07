@@ -1,0 +1,29 @@
+/**
+ * Breadcrumb
+ */
+ul.breadcrumb, ol.breadcrumb {
+  list-style: none;
+  font-size: 1.2rem;
+  background-color: #d3d3d3;
+  padding: 1%;
+}
+
+ul.breadcrumb li, ol.breadcrumb li {
+  display: inline;
+}
+
+ul.breadcrumb li a, ol.breadcrumb li a {
+  text-decoration: none;
+}
+
+ul.breadcrumb li a:hover, ol.breadcrumb li a:hover {
+  text-decoration: underline;
+}
+
+ul.breadcrumb li:after, ol.breadcrumb li:after {
+  content: " /";
+}
+
+ul.breadcrumb li:last-child:after, ol.breadcrumb li:last-child:after {
+  content: "";
+}
