@@ -14,7 +14,7 @@
     <div class="container">
         <header>
             <nav class="navbar navbar-dark">
-                <a href="#" class="navbar-title">Navbar</a>
+                <a href="#" class="navbar-title">Bank</a>
                 <div class="col-1">
                 <ul class="nav-items">
                     <li class="nav-item"><a href="#" class="nav-link">Accueil</a></li>
@@ -37,6 +37,11 @@
                 </ul>
                 </div>
             </nav>
+
+            <div>
+                {% block breadcrumb %}
+                {% endblock %}
+            </div>
         </header>
 
         {% block body %}
