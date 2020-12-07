@@ -1,0 +1,54 @@
+/**
+ * Panel
+ */
+.panel {
+  border: 1px solid transparent;
+  background-color: white;
+  margin-bottom: 1%;
+}
+
+.panel-default {
+  border-color: $panel-default-color;
+}
+
+.panel-primary {
+  border-color: $panel-primary-color;
+}
+
+.panel-heading {
+  border-bottom: 1px solid transparent;
+}
+
+.panel-default > .panel-heading {
+  border-bottom-color: $panel-default-color;
+  background-color: darken($panel-default-background-color, 10%);
+}
+
+.panel-primary > .panel-heading {
+  border-bottom-color: $panel-default-color;
+  background-color: $panel-primary-background-color;
+  color: white;
+}
+
+.panel-title {
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 10px;
+}
+
+.panel-body {
+  padding: 0 10px;
+}
+
+.panel-default > .panel-footer {
+  background-color: $panel-default-background-color;
+}
+
+.panel-primary > .panel-footer {
+  background-color: lighten($panel-primary-background-color, 10%);
+  color: white;
+}
+
+.panel-footer {
+  padding: 10px;
+}
