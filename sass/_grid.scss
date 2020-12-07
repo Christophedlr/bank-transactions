@@ -4,6 +4,10 @@
   margin-left: 2%;
 }
 
+.row {
+  display: flex;
+}
+
 @mixin make-col($grid-columns) {
   @for $i from 1 through $grid-columns {
     .col-#{$i} {
