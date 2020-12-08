@@ -22,8 +22,22 @@
                 </div>
                 <div class="col-offset-8 col-2">
                 <ul class="nav-items">
+                {% if request.user.is_authenticated %}
                     <li class="nav-item">
                         <a href="#" class="nav-link ico">
+                            <img src="{% static 'app/images/icons/user.svg' %}" alt="" class="ico ico-user-navbar">
+                            Profil
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link ico">
+                            <img src="{% static 'app/images/icons/user_register.svg' %}" alt="" class="ico ico-user-register-navbar">
+                            Déconnexion
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a href="{% url 'login' %}" class="nav-link ico">
                             <img src="{% static 'app/images/icons/user.svg' %}" alt="" class="ico ico-user-navbar">
                             Connexion
                         </a>
@@ -34,6 +48,7 @@
                             Inscription
                         </a>
                     </li>
+                {% endif %}
                 </ul>
                 </div>
             </nav>

@@ -4,7 +4,7 @@ from .forms.login import LoginForm
 
 
 def index(request):
-    return render(request, 'app/index.html', {})
+    return render(request, 'app/index.html', {'request': request})
 
 
 # Login form
