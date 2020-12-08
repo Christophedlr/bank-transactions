@@ -1,15 +1,12 @@
 from django import forms
-from django.forms import ModelForm
-from bank.app.models import User
+from django.contrib.auth.forms import AuthenticationForm
 
 
-class LoginForm(ModelForm):
+# Custom login form
+class LoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(LoginForm, self).__init__(*args, **kwargs)
+
         self.fields['username'].widget.attrs.update({'class': 'form-control', 'maxlength': '150'})
         self.fields['password'].widget=forms.PasswordInput()
         self.fields['password'].widget.attrs.update({'class': 'form-control'})
-
-    class Meta:
-        model = User
-        fields = ['username', 'password']

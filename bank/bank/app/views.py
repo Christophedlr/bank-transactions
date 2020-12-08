@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.views import LoginView
 from .forms.login import LoginForm
 
 
@@ -8,5 +9,8 @@ def index(request):
 
 # Login form
 def login(request):
-    form = LoginForm();
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+
+    form = LoginForm()
     return render(request, 'app/user/login.html', {'form': form})
