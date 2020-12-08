@@ -11,6 +11,12 @@
 
 {% block body %}
     <form action="" method="post">
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-error">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+
         {% csrf_token %}
         <div class="form-group">
             <label for="id_username">{{ form.username.label }}</label>
