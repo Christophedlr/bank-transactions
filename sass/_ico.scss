@@ -20,3 +20,12 @@
 .ico-user-register-navbar:hover {
   fill: darken($nav-color, 30%);
 }
+
+.ico-standby-navbar {
+  width: 19px;
+  fill: $nav-color;
+}
+
+.ico-standby-navbar:hover {
+  fill: darken($nav-color, 30%);
+}

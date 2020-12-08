@@ -14,24 +14,24 @@
     <div class="container">
         <header>
             <nav class="navbar navbar-dark">
-                <a href="#" class="navbar-title">Bank</a>
+                <span class="navbar-title">Bank</span>
                 <div class="col-1">
                 <ul class="nav-items">
-                    <li class="nav-item"><a href="#" class="nav-link">Accueil</a></li>
+                    <li class="nav-item"><a href="{% url 'index' %}" class="nav-link">Accueil</a></li>
                 </ul>
                 </div>
                 <div class="col-offset-8 col-2">
                 <ul class="nav-items">
                 {% if request.user.is_authenticated %}
                     <li class="nav-item">
-                        <a href="#" class="nav-link ico">
+                        <a href="{% url 'profile' %}" class="nav-link ico">
                             <img src="{% static 'app/images/icons/user.svg' %}" alt="" class="ico ico-user-navbar">
                             Profil
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link ico">
-                            <img src="{% static 'app/images/icons/user_register.svg' %}" alt="" class="ico ico-user-register-navbar">
+                        <a href="{% url 'logout' %}" class="nav-link ico">
+                            <img src="{% static 'app/images/icons/standby.svg' %}" alt="" class="ico ico-standby-navbar">
                             Déconnexion
                         </a>
                     </li>
@@ -43,7 +43,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link ico">
+                        <a href="{% url 'register' %}" class="nav-link ico">
                             <img src="{% static 'app/images/icons/user_register.svg' %}" alt="" class="ico ico-user-register-navbar">
                             Inscription
                         </a>
