@@ -1,0 +1,19 @@
+/**
+ * Alert component
+ */
+.alert {
+  padding: 1rem;
+  margin-bottom: 0.5%;
+  border: 2px solid transparent;
+  font-size: 1.1rem;
+}
+
+.alert-error {
+  background-color: lighten($color-error, 30%);
+  color: $color-error;
+}
+
+.alert-success {
+  background-color: lighten($color-success, 30%);
+  color: $color-success;
+}
