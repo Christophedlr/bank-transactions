@@ -1,0 +1,40 @@
+{% extends 'app/layout.html' %}
+
+{% block title %}Inscription utilisateur{% endblock %}
+
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'index' %}">Accueil</a></li>
+        <li>Inscription</li>
+    </ul>
+{% endblock %}
+
+{% block body %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_username">{{ form.username.label }}</label>
+            {{ form.username }}
+            <p>{{ form.username.help_text }}</p>
+        </div>
+
+        <div class="form-group">
+            <label for="id_password1">{{ form.password1.label }}</label>
+            {{ form.password1 }}
+            <p>{{ form.password1.help_text }}</p>
+        </div>
+
+        <div class="form-group">
+            <label for="id_password2">{{ form.password2.label }}</label>
+            {{ form.password2 }}
+            <p>{{ form.password2.help_text }}</p>
+        </div>
+
+        <div class="form-group">
+            <label for="id_email">{{ form.email.label }}</label>
+            {{ form.email }}
+        </div>
+
+        <button type="submit" class="btn btn-default">Inscription</button>
+    </form>
+{% endblock %}
