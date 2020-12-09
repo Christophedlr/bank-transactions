@@ -6,6 +6,7 @@
 
 .row {
   display: flex;
+  margin-bottom: 1%;
 }
 
 @mixin make-col($grid-columns) {
