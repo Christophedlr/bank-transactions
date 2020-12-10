@@ -15,6 +15,10 @@
   border: 1px solid $panel-default-color;
 }
 
+select.form-control {
+  height: 2rem;
+}
+
 .form-control:focus {
   outline: 0;
   border-color: darken($panel-default-color, 20%);
