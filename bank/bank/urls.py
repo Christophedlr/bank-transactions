@@ -16,8 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from bank.app.views import index, register, profile
 from bank.app.forms.login import LoginForm
+from bank.app.views import index, register, profile
+from bank.system.views import add_account as add_account_system
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,4 +30,5 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('register/', register, name='register'),
     path('profile/', profile, name='profile'),
+    path('account/add', add_account_system, name='add_account_system'),
 ]
