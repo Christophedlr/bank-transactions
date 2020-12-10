@@ -29,3 +29,12 @@
 .ico-standby-navbar:hover {
   fill: darken($nav-color, 30%);
 }
+
+.ico-bank-euros-navbar {
+  width: 19px;
+  fill: $nav-color;
+}
+
+.ico-bank-euros-navbar:hover {
+  fill: darken($nav-color, 30%);
+}
