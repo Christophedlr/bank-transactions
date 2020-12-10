@@ -2,10 +2,13 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 
 from bank.system.forms.add_account import AddAccountForm
+from bank.system.models import Account
 
 
 def index(request):
-    return render(request, 'system/list.html', context={})
+    accounts = Account.objects.filter(user=request.user)
+
+    return render(request, 'system/list.html', context={'accounts': accounts})
 
 
 # Create new account

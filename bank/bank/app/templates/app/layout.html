@@ -20,9 +20,15 @@
                     <li class="nav-item"><a href="{% url 'index' %}" class="nav-link">Accueil</a></li>
                 </ul>
                 </div>
-                <div class="col-offset-8 col-2">
+                <div class="col-offset-7 col-3">
                 <ul class="nav-items">
                 {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="{% url 'index_system' %}" class="nav-link">
+                            <img src="{% static 'app/images/icons/bank_euros.svg' %}" alt="" class="ico ico-bank-euros-navbar">
+                            Comptes
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a href="{% url 'profile' %}" class="nav-link ico">
                             <img src="{% static 'app/images/icons/user.svg' %}" alt="" class="ico ico-user-navbar">
