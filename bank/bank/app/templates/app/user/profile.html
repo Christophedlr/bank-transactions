@@ -1,4 +1,5 @@
 {% extends "app/layout.html" %}
+{% load filters %}
 
 {% block title %}Profil utilisateur{% endblock %}
 
@@ -33,16 +34,27 @@
             <form action="" method="post">
                 <div class="form-group">
                     <label for="id_password1">{{ form2.password1.label }}</label>
+                {% if form2.password1.errors %}
+                    {{ form2.password1 |add_class:'form-control-error' }}
+                {% else %}
                     {{ form2.password1 }}
+                {% endif %}
+
                     {{ form2.password1.help_text }}
-                    {{ form2.password1.errors }}
+
+            {% if form2.password1.errors %}
+                <div class="alert alert-error">{{ form2.password1.errors }}</div>
+            {% endif %}
                 </div>
 
                 <div class="form-group">
                     <label for="id_password1">{{ form2.password2.label }}</label>
                     {{ form2.password2 }}
                     {{ form2.password2.help_text }}
-                    {{ form2.password2.errors }}
+
+                {% if form2.password2.errors %}
+                    <div class="alert alert-error">{{ form2.password2.errors }}</div>
+                {% endif %}
                 </div>
 
                 {% csrf_token %}
