@@ -10,6 +10,11 @@
   font-size: 1rem;
 }
 
+a.btn {
+  text-decoration: none;
+  font-family: Arial;
+}
+
 .btn-default {
   border-color: $color-default;
   background-color: $color-default;
