@@ -38,3 +38,21 @@
 .ico-bank-euros-navbar:hover {
   fill: darken($nav-color, 30%);
 }
+
+.ico-pencil {
+  width: 24px;
+  fill: #fe7f36;
+}
+
+.ico-pencil:hover {
+  fill: darken(#fe7f36, 30%);
+}
+
+.ico-delete {
+  width: 24px;
+  fill: $color-error;
+}
+
+.ico-delete:hover {
+  fill: darken($color-error, 30%);
+}
