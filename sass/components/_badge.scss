@@ -1,0 +1,10 @@
+/**Badge component*/
+.badge {
+  display: inline;
+  padding: 0.1rem 0.3rem;
+}
+
+.badge-default {
+  background-color: $color-default;
+  color: white;
+}
