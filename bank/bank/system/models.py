@@ -12,10 +12,16 @@ class Account(models.Model):
         verbose_name = 'Compte bancaire'
         verbose_name_plural = 'Comptes bancaire'
 
+    def __str__(self):
+        return "%s" % self.name
+
 
 # Category of transaction
 class Category(models.Model):
     name = models.CharField(max_length=50, null=False)
+
+    def __str__(self):
+        return "%s" % self.name
 
     class Meta:
         db_table = 'bank_category'
@@ -29,6 +35,10 @@ class Transaction(models.Model):
     account = models.ForeignKey(Account, on_delete=models.DO_NOTHING)
     type = models.SmallIntegerField(default=1) # 0 = Debit, 1 = Credit
     label = models.CharField(max_length=50, null=False)
+    amount = models.FloatField(null=False, default=0)
+
+    def __str__(self):
+        return "%s" % self.label
 
     class Meta:
         db_table = 'bank_transaction'
