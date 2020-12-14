@@ -2,6 +2,14 @@
 
 {% block title %}Ajouter compte{% endblock %}
 
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'index' %}">Accueil</a></li>
+        <li><a href="{% url 'index_system' %}">Comptes</a></li>
+        <li>Ajout</li>
+    </ul>
+{% endblock %}
+
 {% block body %}
     <div class="row">
         <h2 class="col-12">Ajouter un compte</h2>
