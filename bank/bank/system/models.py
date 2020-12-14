@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db import models
 from bank.app.models import User
 
@@ -36,6 +37,7 @@ class Transaction(models.Model):
     type = models.SmallIntegerField(default=1) # 0 = Debit, 1 = Credit
     label = models.CharField(max_length=50, null=False)
     amount = models.FloatField(null=False, default=0)
+    date = models.DateTimeField(null=False, blank=True, default=datetime.now())
 
     def __str__(self):
         return "%s" % self.label
