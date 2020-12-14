@@ -3,6 +3,13 @@
 
 {% block title %}Comptes{% endblock %}
 
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'index' %}">Accueil</a></li>
+        <li>Comptes</li>
+    </ul>
+{% endblock %}
+
 {% block body%}
     <div class="row">
         <h2 class="col-offset-1 col-11">Vos comptes actuels</h2>
@@ -10,7 +17,7 @@
 
     <div class="row">
         <div class="col-12">
-            <a href="#" class="btn btn-primary">Ajouter un compte</a>
+            <a href="{% url 'add_account_system' %}" class="btn btn-primary">Ajouter un compte</a>
         </div>
     </div>
 
@@ -21,7 +28,7 @@
     <div class="row">
         {% if accounts %}
             {% for account in accounts %}
-                <div class="col-11"><a href="#" class="account-name">{{ account.name }}</a></div>
+                <div class="col-11"><a href="{% url 'list_transactions_system' account.id %}" class="account-name">{{ account.name }}</a></div>
                 <div class="col-1">
                     <img src="{% static 'system/images/pencil.svg' %}" class="ico ico-pencil">
                     <img src="{% static 'system/images/delete.svg' %}" class="ico ico-delete">
