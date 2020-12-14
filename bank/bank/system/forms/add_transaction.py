@@ -1,3 +1,4 @@
+from datetime import datetime
 from django import forms
 from bank.system.models import Category, Transaction
 
@@ -10,7 +11,8 @@ class AddTransactionForm(forms.ModelForm):
 
     type = forms.ChoiceField(widget=forms.Select, choices=CHOICES)
     category = forms.ModelChoiceField(queryset=Category.objects.order_by('name'))
+    date = forms.DateTimeField(widget=forms.DateTimeInput(attrs={'type': 'datetime-local'}))
 
     class Meta:
         model = Transaction
-        fields = ('label', 'amount', 'type', 'category')
+        fields = ('label', 'amount', 'type', 'category', 'date')
