@@ -1,0 +1,44 @@
+{%  extends 'app/layout.html' %}
+{% load static %}
+
+{% block title %}Transactions{% endblock %}
+
+{% block body%}
+    <div class="row">
+        <h2 class="col-offset-1 col-11">Vos transactions pour le compte <i>{{ account.name }}</i></h2>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <a href="{% url 'add_transaction_system' id  %}" class="btn btn-primary">Ajouter une transaction</a>
+        </div>
+    </div>
+
+    <div class="row text-bold mt-1">
+        <div class="col-1">Date</div>
+        <div class="col-8">Label</div>
+        <div class="col-1">Type</div>
+        <div class="col-2">Montant</div>
+    </div>
+
+    {% if transactions %}
+        {% for transaction in transactions %}
+            <div class="row">
+                <div class="col-1">{{ transaction.date|date:'d/m/Y H:i' }}</div>
+                <div class="col-8">{{ transaction.label }}</div>
+                <div class="col-1">
+                    {% if transaction.type == 0 %}Débit{% elif transaction.type == 1 %}Crédit{% endif %}
+                </div>
+                {% if transaction.type == 0 %}
+                    <div class="col-2 text-red text-bold">{{ transaction.amount }} €</div>
+                {% elif transaction.type == 1 %}
+                    <div class="col-2 text-green text-bold">{{ transaction.amount }} €</div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="row">
+            <div class="col-12 text-center">Vous n'avez pas enregistré de transactions</div>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from bank.system.forms.add_account import AddAccountForm
 from bank.system.forms.add_transaction import AddTransactionForm
 from bank.system.forms.add_category import AddCategoryForm
-from bank.system.models import Account, Category
+from bank.system.models import Account, Category, Transaction
 
 
 def index(request):
@@ -63,3 +63,22 @@ def add_category(request):
     form = AddCategoryForm()
 
     return render(request, 'system/add_category.html', context={'form': form})
+
+
+def list_transactions(request, id):
+    account = Account.objects.filter(user=request.user).filter(id=id)[0]
+
+    if not account:
+        redirect('index_system')
+
+    transactions = Transaction.objects.filter(account=account).order_by()
+
+    return render(
+        request,
+        'system/list_transactions.html',
+        context={
+            'account': account,
+            'transactions': transactions,
+            'id': id
+        }
+    )
