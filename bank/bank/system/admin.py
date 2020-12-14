@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from bank.system.models import Category, Transaction, Account
+
+admin.site.register(Category)
+admin.site.register(Transaction)
+admin.site.register(Account)
