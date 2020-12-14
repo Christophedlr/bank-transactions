@@ -132,4 +132,4 @@ dmypy.json
 .idea/
 *.iml
 
-settings.ini
+/settings.ini
