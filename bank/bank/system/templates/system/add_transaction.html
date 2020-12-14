@@ -1,0 +1,45 @@
+{% extends 'app/layout.html' %}
+{% load filters %}
+
+{% block title %}Ajout transaction{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <h2 class="col-12">Ajouter une transaction</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for="id_label">Transaction</label>
+                    {{ form.label|add_class:'form-control' }}
+                    {{ form.label.errors }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_amount">Transaction</label>
+                    {{ form.amount|add_class:'form-control' }}
+                    {{ form.amount.errors }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_type">Type de transaction</label>
+                    {{ form.type|add_class:'form-control' }}
+                    {{ form.type.errors }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_category">Catégorie</label>
+                    {{ form.category|add_class:'form-control' }}
+                    {{ form.category.errors }}
+                </div>
+
+                <div class="form-group">
+                    {% csrf_token %}
+                    <button type="submit">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

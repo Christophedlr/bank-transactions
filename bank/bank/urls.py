@@ -18,7 +18,10 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 from bank.app.forms.login import LoginForm
 from bank.app.views import index, register, profile
-from bank.system.views import index as index_system, add_account as add_account_system
+from bank.system.views import index as index_system, \
+    add_account as add_account_system, \
+    add_transaction as add_transaction_system, \
+    add_category as add_category_system
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,4 +35,6 @@ urlpatterns = [
     path('profile/', profile, name='profile'),
     path('account/', index_system, name='index_system'),
     path('account/add', add_account_system, name='add_account_system'),
+    path('account/<int:id>/add', add_transaction_system, name='add_transaction_system'),
+    path('category/add', add_category_system, name='add_category_system'),
 ]

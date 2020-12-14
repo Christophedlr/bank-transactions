@@ -1,0 +1,34 @@
+{%  extends 'app/layout.html' %}
+{% load static %}
+
+{% block title %}Comptes{% endblock %}
+
+{% block body%}
+    <div class="row">
+        <h2 class="col-offset-1 col-11">Vos comptes actuels</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <a href="#" class="btn btn-primary">Ajouter un compte</a>
+        </div>
+    </div>
+
+    <div class="row text-bold mt-1">
+        <div class="col-11">Nom du compte</div>
+        <div class="col-1">Actions</div>
+    </div>
+    <div class="row">
+        {% if accounts %}
+            {% for account in accounts %}
+                <div class="col-11"><a href="#" class="account-name">{{ account.name }}</a></div>
+                <div class="col-1">
+                    <img src="{% static 'system/images/pencil.svg' %}" class="ico ico-pencil">
+                    <img src="{% static 'system/images/delete.svg' %}" class="ico ico-delete">
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-12 text-center">Vous n'avez pas enregistré de compte</div>
+        {% endif %}
+    </div>
+{% endblock %}
