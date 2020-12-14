@@ -16,7 +16,11 @@
 }
 
 select.form-control {
-  height: 2rem;
+  height: 2.4rem;
+}
+
+select.form-control[multiple] {
+  height: auto;
 }
 
 .form-control:focus {
