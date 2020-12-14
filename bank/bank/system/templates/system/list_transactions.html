@@ -23,9 +23,22 @@
 
     {% if transactions %}
         {% for transaction in transactions %}
-            <div class="row">
+            {% if forloop.last %}
+                <div class="row">
+            {% else %}
+                <div class="row mb-02">
+            {% endif %}
                 <div class="col-1">{{ transaction.date|date:'d/m/Y H:i' }}</div>
-                <div class="col-8">{{ transaction.label }}</div>
+                <div class="col-8">
+                    <div class="row">
+                        <div class="col-12">{{ transaction.label }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="badge badge-default">{{ transaction.category.name }}</span>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-1">
                     {% if transaction.type == 0 %}Débit{% elif transaction.type == 1 %}Crédit{% endif %}
                 </div>

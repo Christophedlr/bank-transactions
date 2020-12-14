@@ -43,7 +43,7 @@ def add_transaction(request, id):
                 transaction.account = account
                 transaction.save()
 
-            return redirect('index_system')
+            return redirect('list_transactions_system', id=id)
 
     form = AddTransactionForm()
 
