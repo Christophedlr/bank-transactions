@@ -3,6 +3,15 @@
 
 {% block title %}Ajout transaction{% endblock %}
 
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'index' %}">Accueil</a></li>
+        <li><a href="{% url 'index_system' %}">Comptes</a></li>
+        <li><a href="{% url 'list_transactions_system' id %}">Transactions</a></li>
+        <li>Ajout</li>
+    </ul>
+{% endblock %}
+
 {% block body %}
     <div class="row">
         <h2 class="col-12">Ajouter une transaction</h2>

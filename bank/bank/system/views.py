@@ -47,7 +47,7 @@ def add_transaction(request, id):
 
     form = AddTransactionForm()
 
-    return render(request, 'system/add_transaction.html', context={'form': form})
+    return render(request, 'system/add_transaction.html', context={'form': form, 'id': id})
 
 
 def add_category(request):

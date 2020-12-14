@@ -3,6 +3,14 @@
 
 {% block title %}Transactions{% endblock %}
 
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'index' %}">Accueil</a></li>
+        <li><a href="{% url 'index_system' %}">Comptes</a></li>
+        <li>Transactions</li>
+    </ul>
+{% endblock %}
+
 {% block body%}
     <div class="row">
         <h2 class="col-offset-1 col-11">Vos transactions pour le compte <i>{{ account.name }}</i></h2>
