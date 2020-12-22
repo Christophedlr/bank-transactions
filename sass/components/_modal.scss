@@ -1,0 +1,44 @@
+/**
+ * Modal component
+ */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.modal-dialog {
+  position: relative;
+  top: 10%;
+  left: 25%;
+  background-color: #fff;
+  max-width: 40%;
+  width: 40%;
+}
+
+.modal-header {
+  border-bottom: 1px solid lighten(#808080, 25%);
+  padding-top: 0.1rem;
+  padding-left: 1rem;
+}
+
+.modal-body {
+  padding-left: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 1rem;
+  border-top: 1px solid lighten(#808080, 25%);
+}
