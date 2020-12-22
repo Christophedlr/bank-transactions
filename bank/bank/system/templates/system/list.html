@@ -43,4 +43,50 @@
             <div class="col-12 text-center">Vous n'avez pas enregistré de compte</div>
         {% endif %}
     </div>
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#test">test</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#test2">test2</button>
+
+    <div class="modal" id="test" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h2>Test</h2>
+            </div>
+            <div class="modal-body">
+                Bla bla bla bla bla bla
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" type="button" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="test2" tabindex="-1">
+        test2
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{% static 'system/js/jquery-ui.min.js' %}"></script>
+    <script>
+        $.each($('[data-toggle="modal"]'), function() {
+            target = $(this).data('target');
+    
+            if ($(target).hasClass("modal")) {
+                $(target).dialog({
+                    autoOpen: false,
+                    modal: true
+                });
+                $('.ui-dialog-titlebar').remove();
+                
+                $(target).find('[data-dismiss="modal"]').on('click', function() {
+                   $('.modal').dialog('close');
+                });
+            }
+        });
+        
+        $('[data-toggle="modal"]').button().on("click", function() {
+            $($(this).data('target')).dialog("open");
+        });
+    </script>
 {% endblock %}
