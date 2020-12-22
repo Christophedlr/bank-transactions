@@ -23,7 +23,8 @@ from bank.system.views import index as index_system, \
     add_transaction as add_transaction_system, \
     add_category as add_category_system, \
     list_transactions as list_transactions_system, \
-    change_account as change_account_system
+    change_account as change_account_system, \
+    delete_account as delete_account_system
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -41,4 +42,5 @@ urlpatterns = [
     path('category/add', add_category_system, name='add_category_system'),
     path('account/<int:id>', list_transactions_system, name='list_transactions_system'),
     path('account/<int:id>/change', change_account_system, name='change_account_system'),
+    path('account/<int:id>/delete', delete_account_system, name='delete_account_system'),
 ]

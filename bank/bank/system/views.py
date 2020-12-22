@@ -44,6 +44,12 @@ def change_account(request, id):
     return render(request, 'system/add_acount.html', context={'form': form, 'submit': 'Modifier'})
 
 
+def delete_account(request, id):
+    Account.objects.get(id=id).delete()
+
+    return redirect('index_system')
+
+
 def add_transaction(request, id):
     if request.method == 'POST':
         form = AddTransactionForm(request.POST)
