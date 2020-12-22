@@ -30,8 +30,13 @@
             {% for account in accounts %}
                 <div class="col-11"><a href="{% url 'list_transactions_system' account.id %}" class="account-name">{{ account.name }}</a></div>
                 <div class="col-1">
-                    <img src="{% static 'system/images/pencil.svg' %}" class="ico ico-pencil">
-                    <img src="{% static 'system/images/delete.svg' %}" class="ico ico-delete">
+                    <a href="{% url 'change_account_system' account.id %}" title="Modifier">
+                        <img src="{% static 'system/images/pencil.svg' %}" class="ico ico-pencil">
+                    </a>
+
+                    <a href="{% url 'delete_account_system' account.id %}" title="Supprimer">
+                        <img src="{% static 'system/images/delete.svg' %}" class="ico ico-delete">
+                    </a>
                 </div>
             {% endfor %}
         {% else %}
