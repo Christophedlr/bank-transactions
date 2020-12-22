@@ -30,6 +30,20 @@ def add_account(request):
     return render(request, 'system/add_acount.html', context={'form': form})
 
 
+# Change account name
+def change_account(request, id):
+    account = Account.objects.get(id=id)
+    form = AddAccountForm(request.POST or None, instance=account)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            account = form.save()
+
+            return redirect('index_system')
+
+    return render(request, 'system/add_acount.html', context={'form': form, 'submit': 'Modifier'})
+
+
 def add_transaction(request, id):
     if request.method == 'POST':
         form = AddTransactionForm(request.POST)

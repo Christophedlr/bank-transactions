@@ -25,7 +25,13 @@
                 </div>
 
                 {% csrf_token %}
-                <button class="btn btn-default" type="submit">Créer</button>
+                <button class="btn btn-default" type="submit">
+                {% if submit is not None %}
+                    {{ submit }}
+                {% else %}
+                    Créer
+                {% endif %}
+                </button>
             </form>
         </div>
     </div>
