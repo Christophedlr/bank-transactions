@@ -49,8 +49,9 @@ def delete_account(request, id):
 
 
 def add_transaction(request, id):
+    form = AddTransactionForm(request.POST or None)
+
     if request.method == 'POST':
-        form = AddTransactionForm(request.POST)
 
         if form.is_valid():
             transaction = form.save(commit=False)
@@ -63,9 +64,7 @@ def add_transaction(request, id):
 
             return redirect('list_transactions_system', id=id)
 
-    form = AddTransactionForm()
-
-    return render(request, 'system/add_transaction.html', context={'form': form, 'id': id})
+    return render(request, 'system/add_transaction.html', context={'transaction': form, 'id': id})
 
 
 def add_category(request):
@@ -97,6 +96,7 @@ def list_transactions(request, id):
         context={
             'account': account,
             'transactions': transactions,
-            'id': id
+            'id': id,
+            'transaction': AddTransactionForm(),
         }
     )

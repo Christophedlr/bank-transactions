@@ -18,7 +18,7 @@
 
     <div class="row">
         <div class="col-12">
-            <a href="{% url 'add_transaction_system' id  %}" class="btn btn-primary">Ajouter une transaction</a>
+            <a href="{% url 'add_transaction_system' id  %}" class="btn btn-primary" data-toggle="modal" data-target="#add">Ajouter une transaction</a>
         </div>
     </div>
 
@@ -62,4 +62,23 @@
             <div class="col-12 text-center">Vous n'avez pas enregistré de transactions</div>
         </div>
     {% endif %}
+                    
+    <div class="modal" id="add" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h2>Ajouter une transaction</h2>
+            </div>
+            <div class="modal-body">
+                {% include 'system/forms/transaction.html' %}
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" type="button" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+        <script src="{% static 'system/js/jquery-ui.min.js' %}"></script>
+        <script src="{% static 'system/js/modal.js' %}"></script>
 {% endblock %}
