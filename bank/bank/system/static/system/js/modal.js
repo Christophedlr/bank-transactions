@@ -14,6 +14,7 @@ $.each($('[data-toggle="modal"]'), function() {
     }
 });
 
-$('[data-toggle="modal"]').button().on("click", function() {
+$('[data-toggle="modal"]').click(function(event) {
+    event.preventDefault();
     $($(this).data('target')).dialog("open");
 });
