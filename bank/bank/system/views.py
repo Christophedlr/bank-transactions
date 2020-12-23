@@ -42,6 +42,13 @@ def change_account(request, id):
     return render(request, 'system/add_acount.html', context={'form': form, 'submit': 'Modifier'})
 
 
+def ajax_get_account(request, id):
+    account = Account.objects.get(id=id)
+    form = AddAccountForm(request.POST or None, instance=account)
+
+    return render(request, 'system/forms/account.html', context={'account': form, 'submit': 'Modifier'})
+
+
 def delete_account(request, id):
     Account.objects.get(id=id).delete()
 

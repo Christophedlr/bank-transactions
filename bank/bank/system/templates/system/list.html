@@ -18,7 +18,8 @@
     <div class="row">
         <div class="col-12">
             
-            <a href="{% url 'add_account_system' %}" class="btn btn-primary" data-toggle="modal" data-target="#test">Ajouter un compte</a>
+            <a href="{% url 'add_account_system' %}" class="btn btn-primary"
+               data-toggle="modal" data-target="#test">Ajouter un compte</a>
         </div>
     </div>
 
@@ -29,9 +30,12 @@
     <div class="row">
         {% if accounts %}
             {% for account in accounts %}
-                <div class="col-11"><a href="{% url 'list_transactions_system' account.id %}" class="account-name">{{ account.name }}</a></div>
+                <div class="col-11">
+                    <a href="{% url 'list_transactions_system' account.id %}"class="account-name">{{ account.name }}</a>
+                </div>
                 <div class="col-1 td-a-none">
-                    <a href="{% url 'change_account_system' account.id %}" title="Modifier">
+                    <a href="{% url 'change_account_system' account.id %}"
+                       data-toggle="modal" data-target="#update" data-id="{{ account.id }}" title="Modifier">
                         <img src="{% static 'system/images/pencil.svg' %}" class="ico ico-pencil">
                     </a>
 
@@ -58,9 +62,38 @@
             </div>
         </div>
     </div>
+
+    <div class="modal" id="update" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h2>Changer le nom du compte</h2>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" type="button" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
     <script src="{% static 'system/js/jquery-ui.min.js' %}"></script>
+    <script>
+        $('[data-toggle="modal"]').click(function(event) {
+            event.preventDefault();
+            var id = $(this).attr('data-id');
+            var target = $(this).attr('data-target');
+            
+            $.ajax({
+                url: "/api/account/"+id,
+                context: $('div'+target+' .modal-body')
+            }).done(function(data) {
+                var link = "{% url 'change_account_system' '0' %}".replace('0', id);
+                $(this).html(data);
+                $(target+' form[name="add"]').attr('action', link);
+            });
+        });
+    </script>
     <script src="{% static 'system/js/modal.js' %}"></script>
 {% endblock %}
