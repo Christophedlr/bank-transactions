@@ -318,6 +318,7 @@ select.form-control[multiple] {
   padding: 0.5rem 1rem;
   border: 1px solid transparent;
   font-size: 1rem;
+  margin-right: 1rem;
 }
 
 a.btn {
@@ -400,6 +401,54 @@ a.btn {
   color: white;
 }
 
+/**
+ * Modal component
+ */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.modal-dialog {
+  position: relative;
+  top: 10%;
+  left: 25%;
+  background-color: #fff;
+  max-width: 40%;
+  width: 40%;
+}
+
+.modal-header {
+  width: 94%;
+  border-bottom: 1px solid silver;
+  padding-top: 0.1rem;
+  padding-left: 1rem;
+}
+
+.modal-body {
+  width: 94%;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.modal-footer {
+  display: flex;
+  width: 94%;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 1rem;
+  border-top: 1px solid silver;
+}
+
 .ico img {
   fill: currentColor;
   vertical-align: middle;
@@ -480,6 +529,10 @@ a.btn {
 
 .text-green {
   color: green;
+}
+
+.td-a-none > a, .td-a-none {
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=global.css.map */
