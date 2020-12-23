@@ -39,7 +39,8 @@
                         <img src="{% static 'system/images/pencil.svg' %}" class="ico ico-pencil">
                     </a>
 
-                    <a href="{% url 'delete_account_system' account.id %}" title="Supprimer">
+                    <a href="{% url 'delete_account_system' account.id %}"
+                       data-toggle="modal" data-target="#delete" data-id="{{ account.id }}" title="Supprimer">
                         <img src="{% static 'system/images/delete.svg' %}" class="ico ico-delete">
                     </a>
                 </div>
@@ -77,6 +78,21 @@
             </div>
         </div>
     </div>
+
+    <div class="modal" id="delete" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h2>Supprimer un compte</h2>
+            </div>
+            <div class="modal-body">
+                Voulez-vous supprimer le compte ?
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-error" type="button" data-toggle="delete" data-id="">Supprimer</button>
+                <button class="btn btn-default" type="button" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
@@ -87,14 +103,25 @@
             var id = $(this).attr('data-id');
             var target = $(this).attr('data-target');
             
-            $.ajax({
-                url: "/api/account/"+id,
-                context: $('div'+target+' .modal-body')
-            }).done(function(data) {
-                var link = "{% url 'change_account_system' '0' %}".replace('0', id);
-                $(this).html(data);
-                $(target+' form[name="add"]').attr('action', link);
-            });
+            if (target === '#update') {
+                $.ajax({
+                    url: "/api/account/"+id,
+                    context: $('div'+target+' .modal-body')
+                }).done(function(data) {
+                    var link = "{% url 'change_account_system' '0' %}".replace('0', id);
+                    $(this).html(data);
+                    $(target+' form[name="add"]').attr('action', link);
+                });
+            } else if (target === '#delete') {
+                $('[data-toggle="delete"]').attr('data-id', id);
+            }
+        });
+        
+        $('[data-toggle="delete"]').click(function(event) {
+            event.preventDefault();
+            var link = "{% url 'delete_account_system' '0' %}".replace('0', $('[data-toggle="delete"]').attr('data-id'));
+            
+            window.location = link;
         });
     </script>
     <script src="{% static 'system/js/modal.js' %}"></script>
