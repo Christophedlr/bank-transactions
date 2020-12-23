@@ -15,24 +15,5 @@
         <h2 class="col-12">Ajouter un compte</h2>
     </div>
 
-    <div class="row">
-        <div class="col-12">
-            <form action="" method="post">
-                <div class="form-group">
-                    <label for="id_name">Nom du compte</label>
-                    {{ form.name }}
-                    {{ form.name.errors }}
-                </div>
-
-                {% csrf_token %}
-                <button class="btn btn-default" type="submit">
-                {% if submit is not None %}
-                    {{ submit }}
-                {% else %}
-                    Créer
-                {% endif %}
-                </button>
-            </form>
-        </div>
-    </div>
+    {% include 'system/forms/account.html' %}
 {% endblock %}

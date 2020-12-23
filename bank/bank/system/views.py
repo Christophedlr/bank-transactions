@@ -10,14 +10,14 @@ from bank.system.models import Account, Category, Transaction
 def index(request):
     accounts = Account.objects.filter(user=request.user)
 
-    return render(request, 'system/list.html', context={'accounts': accounts})
+    return render(request, 'system/list.html', context={'accounts': accounts, 'account': AddAccountForm()})
 
 
 # Create new account
 def add_account(request):
-    if request.method == 'POST':
-        form = AddAccountForm(request.POST)
+    form = AddAccountForm(request.POST or None)
 
+    if request.method == 'POST':
         if form.is_valid():
             account = form.save(commit=False)
             account.user = request.user
@@ -25,9 +25,7 @@ def add_account(request):
 
             return redirect('index_system')
 
-    form = AddAccountForm()
-
-    return render(request, 'system/add_acount.html', context={'form': form})
+    return render(request, 'system/add_acount.html', context={'account': form})
 
 
 # Change account name

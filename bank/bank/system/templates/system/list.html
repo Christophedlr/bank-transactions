@@ -17,7 +17,8 @@
 
     <div class="row">
         <div class="col-12">
-            <a href="{% url 'add_account_system' %}" class="btn btn-primary">Ajouter un compte</a>
+            
+            <a href="{% url 'add_account_system' %}" class="btn btn-primary" data-toggle="modal" data-target="#test">Ajouter un compte</a>
         </div>
     </div>
 
@@ -44,25 +45,21 @@
         {% endif %}
     </div>
 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#test">test</button>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#test2">test2</button>
+    <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#test">test</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#test2">test2</button>-->
 
     <div class="modal" id="test" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-header">
-                <h2>Test</h2>
+                <h2>Ajouter un compte</h2>
             </div>
             <div class="modal-body">
-                Bla bla bla bla bla bla
+                {% include 'system/forms/account.html' %}
             </div>
             <div class="modal-footer">
                 <button class="btn btn-default" type="button" data-dismiss="modal">Fermer</button>
             </div>
         </div>
-    </div>
-
-    <div id="test2" tabindex="-1">
-        test2
     </div>
 {% endblock %}
 

@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-12">
+        <form action="{% url 'add_account_system' %}" method="post">
+            <div class="form-group">
+                <label for="id_name">Nom du compte</label>
+                {{ account.name }}
+                {{ account.name.errors }}
+            </div>
+            
+            {% csrf_token %}
+            <button class="btn btn-default" type="submit">
+                {% if submit is not None %}
+                {{ submit }}
+                {% else %}
+                Créer
+                {% endif %}
+            </button>
+        </form>
+    </div>
+</div>
