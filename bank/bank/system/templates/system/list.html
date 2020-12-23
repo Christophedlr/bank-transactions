@@ -30,7 +30,7 @@
         {% if accounts %}
             {% for account in accounts %}
                 <div class="col-11"><a href="{% url 'list_transactions_system' account.id %}" class="account-name">{{ account.name }}</a></div>
-                <div class="col-1">
+                <div class="col-1 td-a-none">
                     <a href="{% url 'change_account_system' account.id %}" title="Modifier">
                         <img src="{% static 'system/images/pencil.svg' %}" class="ico ico-pencil">
                     </a>
@@ -44,9 +44,6 @@
             <div class="col-12 text-center">Vous n'avez pas enregistré de compte</div>
         {% endif %}
     </div>
-
-    <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#test">test</button>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#test2">test2</button>-->
 
     <div class="modal" id="test" tabindex="-1">
         <div class="modal-dialog">
