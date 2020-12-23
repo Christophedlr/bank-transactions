@@ -23,12 +23,14 @@
 }
 
 .modal-header {
+  width: 94%;
   border-bottom: 1px solid lighten(#808080, 25%);
   padding-top: 0.1rem;
   padding-left: 1rem;
 }
 
 .modal-body {
+  width: 94%;
   padding-left: 1rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -36,6 +38,7 @@
 
 .modal-footer {
   display: flex;
+  width: 94%;
   justify-content: flex-end;
   padding-top: 1rem;
   padding-bottom: 1rem;
