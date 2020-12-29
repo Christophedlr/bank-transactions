@@ -51,9 +51,9 @@
                     {% if transaction.type == 0 %}Débit{% elif transaction.type == 1 %}Crédit{% endif %}
                 </div>
                 {% if transaction.type == 0 %}
-                    <div class="col-2 text-red text-bold">{{ transaction.amount }} €</div>
+                    <div class="col-2 text-red text-bold">{{ transaction.amount|floatformat:transaction.account.decimal }} {{transaction.account.currency}}</div>
                 {% elif transaction.type == 1 %}
-                    <div class="col-2 text-green text-bold">{{ transaction.amount }} €</div>
+                    <div class="col-2 text-green text-bold">{{ transaction.amount|floatformat:transaction.account.decimal }} {{transaction.account.currency}}</div>
                 {% endif %}
             </div>
         {% endfor %}
