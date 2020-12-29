@@ -1,12 +1,21 @@
 from datetime import datetime
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
+
 from bank.app.models import User
 
 
 # Accounts of user
 class Account(models.Model):
-    name = models.CharField(max_length=50, null=False)
-    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    name = models.CharField(max_length=50, null=False, verbose_name='Nom du compte')
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING, verbose_name='Utilisateur')
+    currency = models.CharField(max_length=10, null=False, default='€', verbose_name='Monnaie')
+    decimal = models.IntegerField(
+        null=False,
+        default=2,
+        validators=[MinValueValidator(2), MaxValueValidator(8)],
+        verbose_name='Décimales'
+    )
 
     class Meta:
         db_table = 'bank_account'
