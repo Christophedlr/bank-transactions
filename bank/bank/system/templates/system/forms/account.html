@@ -6,6 +6,18 @@
                 {{ account.name }}
                 {{ account.name.errors }}
             </div>
+
+            <div class="form-group">
+                <label for="id_currency">Symbole ou tag monétaire</label>
+                {{ account.currency }}
+                {{ account.currency.errors }}
+            </div>
+
+            <div class="form-group">
+                <label for="id_decimal">Nombre de décimales</label>
+                {{ account.decimal }}
+                {{ account.decimal.errors }}
+            </div>
             
             {% csrf_token %}
             <button class="btn btn-default" type="submit">

@@ -10,6 +10,14 @@ class AddAccountForm(ModelForm):
             {'class': 'form-control', 'maxlength': 50}
         )
 
+        self.fields['currency'].widget.attrs.update(
+            {'class': 'form-control', 'maxlength': 10}
+        )
+
+        self.fields['decimal'].widget.attrs.update(
+            {'class': 'form-control', 'min': 2, 'max': 8}
+        )
+
     class Meta:
         model = Account
-        fields = ('name',)
+        fields = ('name', 'currency', 'decimal')
