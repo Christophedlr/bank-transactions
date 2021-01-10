@@ -95,7 +95,7 @@ def list_transactions(request, id):
     if not account:
         redirect('index_system')
 
-    transactions = Transaction.objects.filter(account=account).order_by()
+    transactions = Transaction.objects.filter(account=account).order_by('-date')
 
     return render(
         request,
