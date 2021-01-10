@@ -23,8 +23,20 @@
   margin-top: 1%;
 }
 
+.mt-5px {
+  margin-top: 5px;
+}
+
 .mb-02 {
   margin-bottom: 0.2%;
+}
+
+.pb-5px {
+  padding-bottom: 5px;
+}
+
+.pt-10px {
+  padding-top: 10px;
 }
 
 .account-name {
@@ -44,4 +56,8 @@
 
 .td-a-none > a, .td-a-none {
   text-decoration: none;
+}
+
+.border-top-1 {
+  border-top: 1px solid #cacaca;
 }
