@@ -10,9 +10,9 @@ class AddTransactionForm(forms.ModelForm):
     )
 
     type = forms.ChoiceField(widget=forms.Select, choices=CHOICES)
-    category = forms.ModelChoiceField(queryset=Category.objects.order_by('name'))
+    categories = forms.ModelMultipleChoiceField(queryset=Category.objects.order_by('name'))
     date = forms.DateTimeField(widget=forms.DateTimeInput(attrs={'type': 'datetime-local'}))
 
     class Meta:
         model = Transaction
-        fields = ('label', 'amount', 'type', 'category', 'date')
+        fields = ('label', 'amount', 'type', 'categories', 'date')

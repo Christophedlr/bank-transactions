@@ -68,6 +68,7 @@ def add_transaction(request, id):
             if account:
                 transaction.account = account
                 transaction.save()
+                transaction.categories.set(form.cleaned_data['categories'])
 
             return redirect('list_transactions_system', id=id)
 

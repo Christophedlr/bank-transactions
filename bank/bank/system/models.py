@@ -41,7 +41,7 @@ class Category(models.Model):
 
 # Transaction of account
 class Transaction(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
+    categories = models.ManyToManyField(Category)
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
     type = models.SmallIntegerField(default=1) # 0 = Debit, 1 = Credit
     label = models.CharField(max_length=50, null=False)

@@ -32,7 +32,7 @@
     {% if transactions %}
         {% for transaction in transactions %}
             {% if forloop.last %}
-                <div class="row">
+                <div class="row border-top-1 pt-10px pb-5px mt-5px">
             {% else %}
                 <div class="row mb-02 border-top-1 pt-10px pb-5px mt-5px">
             {% endif %}
@@ -43,7 +43,9 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <span class="ml-1 badge badge-default">{{ transaction.category.name }}</span>
+                            {% for category in transaction.categories.all %}
+                                <span class="ml-1 badge badge-default">{{ category.name }}</span>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
