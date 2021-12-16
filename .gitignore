@@ -133,3 +133,4 @@ dmypy.json
 *.iml
 
 /settings.ini
+/static/
