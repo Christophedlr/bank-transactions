@@ -97,7 +97,13 @@ def list_transactions(request, id):
     if not account:
         redirect('index_system')
 
-    transactions = Transaction.objects.filter(account=account).order_by('-date')
+    if request.GET.get('startdate') and request.GET.get('enddate'):
+        transactions = Transaction.objects.filter(
+            account=account, date__range=(request.GET.get('startdate'), request.GET.get('enddate'))
+        ).order_by('-date')
+    else:
+        transactions = Transaction.objects.filter(account=account).order_by('-date')
+
     credit:float = 0
     debit:float = 0
 
@@ -106,8 +112,6 @@ def list_transactions(request, id):
             credit += transaction.amount
         else:
             debit += -transaction.amount
-
-    # total = Transaction.objects.filter(account=account).aggregate(Sum('amount'))['amount__sum']
 
     return render(
         request,

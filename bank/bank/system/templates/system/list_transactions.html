@@ -16,6 +16,16 @@
         <h2 class="col-offset-1 col-11">Vos transactions pour le compte <i>{{ account.name }}</i></h2>
     </div>
 
+    <div class="row">
+        <div class="col-offset-8 col-4">
+            <form action="" method="GET">
+                <input type="date" name="startdate">-<input type="date" name="enddate">
+                <button type="submit" class="btn btn-primary">Filtrer</button>
+                <a href="{%  url 'list_transactions_system' account.id %}" class="btn btn-primary">Supprimer filtre</a>
+            </form>
+        </div>
+    </div>
+
     <div class="row mb-02">
         <div class="col-12">
             <div>&Eacute;tat de votre compte :</div>
