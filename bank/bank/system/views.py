@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.db.models import Sum
 
 from bank.system.forms.add_account import AddAccountForm
 from bank.system.forms.add_transaction import AddTransactionForm
@@ -97,6 +98,16 @@ def list_transactions(request, id):
         redirect('index_system')
 
     transactions = Transaction.objects.filter(account=account).order_by('-date')
+    credit:float = 0
+    debit:float = 0
+
+    for transaction in transactions:
+        if transaction.type == 1:
+            credit += transaction.amount
+        else:
+            debit += -transaction.amount
+
+    # total = Transaction.objects.filter(account=account).aggregate(Sum('amount'))['amount__sum']
 
     return render(
         request,
@@ -106,5 +117,8 @@ def list_transactions(request, id):
             'transactions': transactions,
             'id': id,
             'transaction': AddTransactionForm(),
+            'credit': credit,
+            'debit': -debit,
+            'total': credit-(-debit),
         }
     )

@@ -16,7 +16,17 @@
         <h2 class="col-offset-1 col-11">Vos transactions pour le compte <i>{{ account.name }}</i></h2>
     </div>
 
-    <div class="row">
+    <div class="row mb-02">
+        <div class="col-12">
+            <div>&Eacute;tat de votre compte :</div>
+            <div>Total : <span class="text-bold">{{ total|floatformat:account.decimal }} {{ account.currency }}</span></div>
+            <div>D&eacute;penses : <span class="text-red text-bold">{{ debit|floatformat:account.decimal }} {{ account.currency }}</span></div>
+            <div>Recettes : <span class="text-green text-bold">{{ credit|floatformat:account.decimal }} {{ account.currency }}</span></div>
+
+        </div>
+    </div>
+
+    <div class="row mt-1">
         <div class="col-12">
             <a href="{% url 'add_transaction_system' id  %}" class="btn btn-primary" data-toggle="modal" data-target="#add">Ajouter une transaction</a>
         </div>
