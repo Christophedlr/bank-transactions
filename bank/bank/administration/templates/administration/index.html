@@ -1,0 +1,35 @@
+{% extends 'administration/layout.html' %}
+{% load log %}
+
+{% block body %}
+    <section class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title">Administration</h1>
+        </div>
+        <p class="panel-body">
+            Pour accéder à l'administration d'un élément, reportez-vous au menu à gauche.
+            Le menu reste affiché sur chacune des pages, facilitant la navigation.
+            Ci-dessous, les cinq dernières activitées enregistrée par l'administration.
+        </p>
+    </section>
+
+    <section class="">
+        <div class="list-heading">
+            <h1>Logs d'administration</h1>
+        </div>
+
+        <div class="list-items">
+            {% get_admin_log 5 as admin_log %}
+
+            {% if not admin_log %}
+                <p>Aucun logs</p>
+            {% else %}
+                <ul>
+                    {% for entry in admin_log %}
+                        <li>{{ entry.object_repr }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

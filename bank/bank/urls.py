@@ -26,9 +26,10 @@ from bank.system.views import index as index_system, \
     change_account as change_account_system, \
     delete_account as delete_account_system, \
     ajax_get_account as ajax_get_account_system
+from bank.administration.views import index as admin_index
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('django/', admin.site.urls),
     path('', index, name="index"),
     path('login', auth_views.LoginView.as_view(
         template_name='app/user/login.html',
@@ -45,4 +46,5 @@ urlpatterns = [
     path('account/<int:id>/change', change_account_system, name='change_account_system'),
     path('api/account/<int:id>', ajax_get_account_system, name='ajax_get_account_system'),
     path('account/<int:id>/delete', delete_account_system, name='delete_account_system'),
+    path('admin/', admin_index, name='admin_index')
 ]

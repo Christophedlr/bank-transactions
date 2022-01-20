@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+.mb-1 {
+   margin-bottom: 1%;
+}
+
+.list-heading {
+   border-bottom-color: #e0e0e0;
+   background-color: #337ab7;
+   color: white;
+}
+
+.list-heading > h1, .list-heading > h2, .list-heading > h3, .list-heading > h4, .list-heading > h5, .list-heading > h6 {
+   font-size: 1.2rem;
+   margin: 0;
+   padding: 10px;
+}
+
+.list-items > ul, .list-items > ol {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+}
+
+.list-items > ul > li, .list-items > ol > li {
+   border-left: 1px solid #e0e0e0;
+   border-right: 1px solid #e0e0e0;
+   border-bottom: 1px solid #e0e0e0;
+   font-size: 1rem;
+   padding: 10px;
+   cursor: default;
+}
+
+.list-items > ul > li:first-child, .list-items > ol > li:first-child {
+   border-top: 1px solid #e0e0e0;
+}
+
+.list-items > ul > li:hover, .list-items > ol > li:hover {
+   background-color: #E0E0E0B5;
+}

@@ -1,0 +1,51 @@
+{% load static %}
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'app/css/global.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'administration/css/administration.css' %}" type="text/css">
+    {% block stylesheets %}{% endblock %}
+    <title>{% block title %}{% endblock %} - Bank Transactions Administration</title>
+</head>
+<body>
+    <div class="container">
+        <header class="mb-1">
+            <nav class="navbar navbar-dark">
+                <div class="col-2">
+                <ul class="nav-items">
+                    <li class="nav-item"><a href="{% url 'admin_index' %}" class="nav-link">Accueil Administration</a></li>
+                    <li class="nav-item"><a href="{% url 'index' %}" class="nav-link">Accueil</a></li>
+                </ul>
+                </div>
+            </nav>
+        </header>
+
+        <aside style="float: left" class="col-4">
+            Menu items
+        </aside>
+
+        <div class="col-offset-4">
+        {% block body %}
+        {% endblock %}
+        </div>
+
+        <footer>
+            <p><b>Bank Transactions</b> est développé par <i>Christophe Daloz - De Los Rios</i>.
+                Copyright &copy; Christophe Daloz - De Los Rios, 2020 - Licence MIT</p>
+
+            <p>Le site est strictement réservé à un usage personnel, pour des raisons de RGPD notemment.
+                Toute utilisation dans un autre cadre, ne peut tenir le développeur pour responsable,
+                ni exigé de ce dernier un respect de la RGPD.<br>
+                Le développeur permet d'obtenir une copie de l'outil, mais ne fournis pas d'accès à ce dernier.</p>
+        </footer>
+    </div>
+
+    <script src="{% static 'app/js/jquery-3.5.1.min.js' %}" type="application/javascript"></script>
+    <script src="{% static 'app/js/icons.js' %}" type="application/javascript"></script>
+    {% block javascripts %}{% endblock %}
+</body>
+</html>
