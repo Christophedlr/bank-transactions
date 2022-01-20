@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bank.app',
     'bank.system',
+    'bank.administration',
 ]
 
 MIDDLEWARE = [
