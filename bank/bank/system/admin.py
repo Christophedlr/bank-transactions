@@ -1,6 +1,13 @@
 from django.contrib import admin
 
 from bank.system.models import Category, Transaction, Account
+from bank.administration.admin import AbstractAdministrationLinks
+
+
+class AdministrationLinks(AbstractAdministrationLinks):
+    def __init__(self):
+        self.add_menu('Système')
+        self.add_link('Système', 'Liste des comptes', 'admin_account_list')
 
 
 class AccountAdmin(admin.ModelAdmin):
