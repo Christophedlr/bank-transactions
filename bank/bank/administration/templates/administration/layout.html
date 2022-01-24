@@ -1,4 +1,7 @@
 {% load static %}
+{% load adminlinks %}
+
+{% adminlinks as menus %}
 <!doctype html>
 <html lang="fr">
 <head>
@@ -24,13 +27,28 @@
             </nav>
         </header>
 
-        <aside style="float: left" class="col-4">
-            Menu items
+        <div class="row">
+        <aside style="" class="col-2">
+            {% for menu in menus %}
+                {% for key, items in menu.items %}
+                <div class="list-heading">
+                    <h1>{{ key }}</h1>
+                </div>
+                <div class="list-items">
+                    <ul>
+                    {% for element in items %}
+                        <li><a href="{% url element.url %}">{{ element.name }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                {% endfor %}
+            {% endfor %}
         </aside>
 
-        <div class="col-offset-4">
+        <div class="col-offset-1 col-9">
         {% block body %}
         {% endblock %}
+        </div>
         </div>
 
         <footer>
