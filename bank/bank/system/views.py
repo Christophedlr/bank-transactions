@@ -5,7 +5,10 @@ from django.db.models import Sum
 from bank.system.forms.add_account import AddAccountForm
 from bank.system.forms.add_transaction import AddTransactionForm
 from bank.system.forms.add_category import AddCategoryForm
+from bank.system.forms.administration.add_account import AdminAddAccountForm
+
 from bank.system.models import Account, Category, Transaction
+from bank.app.models import User
 
 
 def index(request):
@@ -126,3 +129,48 @@ def list_transactions(request, id):
             'total': credit-(-debit),
         }
     )
+
+
+def admin_account_list (request):
+    accounts = Account.objects.all()
+
+    return render(request, 'system/administration/account_list.html', {
+        'accounts': accounts,
+    })
+
+
+def admin_account_change(request, id):
+    account = Account.objects.get(id=id)
+    form = AdminAddAccountForm(request.POST or None, instance=account)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            account = form.save()
+
+            return redirect('admin_account_list')
+
+    return render(request, 'system/administration/forms/account_change.html', {
+        'account': form,
+        'submit': 'Modifier',
+        'id': id,
+    })
+
+
+def admin_account_delete(request, id):
+    Account.objects.get(id=id).delete()
+
+    return redirect('admin_account_list')
+
+
+def admin_account_add(request):
+    form = AdminAddAccountForm(request.POST or None)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            account = form.save(commit=False)
+            account.user = request.user
+            account.save()
+
+            return redirect('admin_account_list')
+
+    return render(request, 'system/administration/forms/add_acount.html', context={'account': form})

@@ -1,0 +1,49 @@
+{% extends 'administration/layout.html' %}
+{% load static %}
+
+{% block title %}Modifier un compte bancaire{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <h1>Modifier un compte bancaire</h1>
+    </div>
+
+    <section class="row">
+        <div class="col-12">
+            <form name="change" action="{% url 'admin_account_change' id %}" method="post">
+                <div class="form-group">
+                    <label for="id_name">Nom du compte</label>
+                    {{ account.name }}
+                    {{ account.name.errors }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_user">Utilisateur</label>
+                    {{ account.user }}
+                    {{ account.user.errors }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_currency">Symbole ou tag monétaire</label>
+                    {{ account.currency }}
+                    {{ account.currency.errors }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_decimal">Nombre de décimales</label>
+                    {{ account.decimal }}
+                    {{ account.decimal.errors }}
+                </div>
+
+                {% csrf_token %}
+                <button class="btn btn-default" type="submit">
+                    {% if submit is not None %}
+                        {{ submit }}
+                    {% else %}
+                        Créer
+                    {% endif %}
+                </button>
+            </form>
+        </div>
+    </section>
+{% endblock %}
