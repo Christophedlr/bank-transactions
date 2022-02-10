@@ -6,6 +6,7 @@ from bank.system.forms.add_account import AddAccountForm
 from bank.system.forms.add_transaction import AddTransactionForm
 from bank.system.forms.add_category import AddCategoryForm
 from bank.system.forms.administration.add_account import AdminAddAccountForm
+from bank.system.forms.administration.add_transaction import AdminAddTransactionForm
 
 from bank.system.models import Account, Category, Transaction
 from bank.app.models import User
@@ -107,8 +108,8 @@ def list_transactions(request, id):
     else:
         transactions = Transaction.objects.filter(account=account).order_by('-date')
 
-    credit:float = 0
-    debit:float = 0
+    credit: float = 0
+    debit: float = 0
 
     for transaction in transactions:
         if transaction.type == 1:
@@ -126,12 +127,12 @@ def list_transactions(request, id):
             'transaction': AddTransactionForm(),
             'credit': credit,
             'debit': -debit,
-            'total': credit-(-debit),
+            'total': credit - (-debit),
         }
     )
 
 
-def admin_account_list (request):
+def admin_account_list(request):
     accounts = Account.objects.all()
 
     return render(request, 'system/administration/account_list.html', {
@@ -174,3 +175,52 @@ def admin_account_add(request):
             return redirect('admin_account_list')
 
     return render(request, 'system/administration/forms/add_acount.html', context={'account': form})
+
+
+def admin_transaction_list(request):
+    filter: dict = {}
+    transactions: dict = {}
+
+    if "account" in request.GET:
+        filter['account'] = request.GET['account']
+
+    if "user" in request.GET:
+        filter['user'] = request.GET['user']
+
+    if filter:
+        transactions = Transaction.objects\
+            .filter(account=filter['account'])\
+            .filter(account__user=filter['user'])\
+            .order_by('account', '-date')
+
+    accounts = Account.objects.all().order_by('name')
+    users = User.objects.all().order_by('username')
+
+    return render(request, 'system/administration/transaction_list.html', {
+        'transactions': transactions,
+        'accounts': accounts,
+        'users': users,
+    })
+
+
+def admin_transaction_change(request, id):
+    transaction = Transaction.objects.get(id=id)
+    form = AdminAddTransactionForm(request.POST or None, instance=transaction)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            account = form.save()
+
+            return redirect('admin_transaction_list')
+
+    return render(request, 'system/administration/forms/transaction_change.html', {
+        'transaction': form,
+        'submit': 'Modifier',
+        'id': id,
+    })
+
+
+def admin_transaction_delete(request, id):
+    Transaction.objects.get(id=id).delete()
+
+    return redirect('admin_transaction_list')

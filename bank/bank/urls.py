@@ -29,7 +29,10 @@ from bank.system.views import index as index_system, \
     admin_account_list, \
     admin_account_change, \
     admin_account_delete, \
-    admin_account_add
+    admin_account_add, \
+    admin_transaction_list, \
+    admin_transaction_change, \
+    admin_transaction_delete
 from bank.administration.views import index as admin_index
 urlpatterns = [
     path('django/', admin.site.urls),
@@ -54,5 +57,7 @@ urlpatterns = [
     path('admin/account/add', admin_account_add, name='admin_account_add'),
     path('admin/account/<int:id>/change', admin_account_change, name='admin_account_change'),
     path('admin/account/<int:id>/delete', admin_account_delete, name='admin_account_delete'),
+    path('admin/transaction/', admin_transaction_list, name='admin_transaction_list'),
+    path('admin/transaction/<int:id>/change', admin_transaction_change, name='admin_transaction_change'),
+    path('admin/transaction/<int:id>/delete', admin_transaction_delete, name='admin_transaction_delete'),
 ]
-

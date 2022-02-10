@@ -1,0 +1,126 @@
+{% extends 'administration/layout.html' %}
+{% load static %}
+
+{% block title %}
+    Liste des transactions
+{% endblock %}
+
+{% block body %}
+    <section>
+        <h1>Liste des transactions</h1>
+
+            <form action="" method="GET" class="col-11">
+            <div class="col-2 col-offset-1 form-group" style="display: inline">
+                <label for="user">Liste des utilisateurs</label>
+                <select name="user" id="user" class="form-control" style="width: auto; display: inline">
+                    {% for user in users %}
+                        <option value="{{ user.id }}">{{ user.username }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-2 col-offset-1 form-group" style="display: inline">
+                <label for="account">Liste des comptes</label>
+                <select name="account" id="account" class="form-control" style="width: auto; display: inline">
+                    {% for account in accounts %}
+                        <option value="{{ account.id }}">{{ account.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+                <div class="col-2 col-offset-1 form-group" style="display: inline">
+                    <button type="submit" class="btn btn-primary">Filtrer</button>
+                </div>
+            </form>
+        </article>
+
+        <div class="row text-bold mt-1">
+            <div class="col-2">Date</div>
+            <div class="col-4">Transaction</div>
+            <div class="col-1">Type</div>
+            <div class="col-3">Compte</div>
+            <div class="col-1">Montant</div>
+            <div class="col-1">Actions</div>
+        </div>
+
+        <article class="row">
+        {% if transactions %}
+            {% for transaction in transactions %}
+                <div class="col-2">{{ transaction.date|date:"d/m/Y H:i" }}</div>
+
+                <div class="col-4">
+                    {{ transaction.label }}<br>
+                    {% for category in transaction.categories.all %}
+                        <span class="ml-1 badge badge-default">{{ category.name }}</span>
+                    {% endfor %}
+
+                </div>
+
+                <div class="col-1">
+                {% if transaction.type == 0 %}Débit{% elif transaction.type == 1 %}Crédit{% endif %}
+                </div>
+
+                <div class="col-3">{{ transaction.account.name }} - {{ transaction.account.user.username }}</div>
+
+                <div class="col-1 text-right mr-4" style="margin-left: -4%;">
+                    {{ transaction.amount|floatformat:transaction.account.decimal }} &nbsp; {{ transaction.account.currency }}
+                </div>
+
+                <div class="col-1 td-a-none">
+                    <a href="{% url 'admin_transaction_change' transaction.id %}" title="Modifier">
+                        <img src="{% static 'system/images/pencil.svg' %}" class="ico ico-pencil">
+                    </a>
+
+                    <a href=""
+                       data-toggle="modal" data-target="#delete" data-id="{{ transaction.id }}" title="Supprimer">
+                        <img src="{% static 'system/images/delete.svg' %}" class="ico ico-delete">
+                    </a>
+                </div>
+                </article>
+                <article class="row">
+            {% endfor %}
+                </article>
+        {% else %}
+            <div class="col-12 text-center">
+                Il n'y a pas de transactions enregistrées à ce jour ou vous n'avez pas choisi de filtre.
+            </div>
+        {% endif %}
+        </article>
+    </section>
+
+    <div class="modal" id="delete" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h2>Supprimer une transaction</h2>
+            </div>
+            <div class="modal-body">
+                Voulez-vous supprimer la transaction ?
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-error" type="button" data-toggle="delete" data-id="">Supprimer</button>
+                <button class="btn btn-default" type="button" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{% static 'system/js/jquery-ui.min.js' %}"></script>
+    <script>
+        var id;
+        var target;
+
+        $('[data-toggle="modal"]').click(function(event) {
+            event.preventDefault();
+            id = $(this).attr('data-id');
+            target = $(this).attr('data-target');
+        });
+
+        $('[data-toggle="delete"]').click(function(event) {
+            event.preventDefault();
+            var link = "{% url 'admin_account_delete' '0' %}".replace('0', id);
+
+            window.location = link;
+        });
+    </script>
+    <script src="{% static 'system/js/modal.js' %}"></script>
+{% endblock %}

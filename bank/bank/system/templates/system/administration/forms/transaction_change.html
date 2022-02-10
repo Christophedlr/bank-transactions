@@ -1,0 +1,55 @@
+{% extends 'administration/layout.html' %}
+{% load static %}
+
+{% block title %}Modifier une transaction{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <h1>Modifier une transaction</h1>
+    </div>
+
+    <section class="row">
+        <div class="col-12">
+            <form name="change" action="{% url 'admin_transaction_change' id %}" method="post">
+                <div class="form-group">
+                    <label for="id_label">Nom de la transaction</label>
+                    {{ transaction.label }}
+                    {{ transaction.label.errors }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_date">Date</label>
+                    {{ transaction.date }}
+                    {{ transaction.date.errors }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_type">Type de transaction</label>
+                    {{ transaction.type }}
+                    {{ transaction.type.errors }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_categories">Catégories</label>
+                    {{ transaction.categories }}
+                    {{ transaction.categories.errors }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_account">Compte</label>
+                    {{ transaction.account }}
+                    {{ transaction.account.errors }}
+                </div>
+
+                {% csrf_token %}
+                <button class="btn btn-default" type="submit">
+                    {% if submit is not None %}
+                        {{ submit }}
+                    {% else %}
+                        Créer
+                    {% endif %}
+                </button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

@@ -15,4 +15,4 @@ class AddTransactionForm(forms.ModelForm):
 
     class Meta:
         model = Transaction
-        fields = ('label', 'amount', 'type', 'categories', 'date')
+        fields = ('label', 'amount', 'type', 'categories', 'account', 'date')
