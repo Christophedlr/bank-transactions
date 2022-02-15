@@ -1,0 +1,31 @@
+{% extends 'administration/layout.html' %}
+{% load static %}
+
+{% block title %}Modifier une catégorie{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <h1>Modifier une catégorie</h1>
+    </div>
+
+    <section class="row">
+        <div class="col-12">
+            <form name="change" action="" method="post">
+                <div class="form-group">
+                    <label for="id_name">Nom</label>
+                    {{ category.name }}
+                    {{ category.name.errors }}
+                </div>
+
+                {% csrf_token %}
+                <button class="btn btn-default" type="submit">
+                    {% if submit is not None %}
+                        {{ submit }}
+                    {% else %}
+                        Créer
+                    {% endif %}
+                </button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

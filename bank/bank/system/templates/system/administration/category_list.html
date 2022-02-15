@@ -9,7 +9,7 @@
     <section>
         <h1>Liste des catégories</h1>
 
-        <a href="{% url 'admin_account_add' %}" class="btn btn-primary col-offset-9">Ajouter</a>
+        <a href="{% url 'admin_category_add' %}" class="btn btn-primary">Ajouter</a>
 
         <div class="row text-bold mt-1">
             <div class="col-10">Nom</div>
@@ -23,7 +23,7 @@
                 <div class="col-10">{{ category.name }}</div>
 
                 <div class="col-2 td-a-none">
-                    <a href="{% url 'admin_account_change' category.id %}" title="Modifier">
+                    <a href="{% url 'admin_category_change' category.id %}" title="Modifier">
                         <img src="{% static 'system/images/pencil.svg' %}" class="ico ico-pencil">
                     </a>
 
@@ -72,7 +72,7 @@
 
         $('[data-toggle="delete"]').click(function(event) {
             event.preventDefault();
-            var link = "{% url 'admin_account_delete' '0' %}".replace('0', id);
+            var link = "{% url 'admin_category_delete' '0' %}".replace('0', id);
 
             window.location = link;
         });

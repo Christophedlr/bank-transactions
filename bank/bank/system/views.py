@@ -7,6 +7,7 @@ from bank.system.forms.add_transaction import AddTransactionForm
 from bank.system.forms.add_category import AddCategoryForm
 from bank.system.forms.administration.add_account import AdminAddAccountForm
 from bank.system.forms.administration.add_transaction import AdminAddTransactionForm
+from bank.system.forms.administration.add_category import AdminAddCategoryForm
 
 from bank.system.models import Account, Category, Transaction
 from bank.app.models import User
@@ -232,3 +233,38 @@ def admin_category_list(request):
     return render(request, 'system/administration/category_list.html', {
         'categories': categories,
     })
+
+
+def admin_category_add(request):
+    form = AdminAddCategoryForm(request.POST or None)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+
+            return redirect('admin_category_list')
+
+    return render(request, 'system/administration/forms/add_category.html', context={'category': form})
+
+
+def admin_category_change(request, id):
+    category = Category.objects.get(id=id)
+    form = AdminAddCategoryForm(request.POST or None, instance=category)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+
+            return redirect('admin_category_list')
+
+    return render(request, 'system/administration/forms/category_change.html', {
+        'category': form,
+        'submit': 'Modifier',
+        'id': id,
+    })
+
+
+def admin_category_delete(request, id):
+    Category.objects.get(id=id).delete()
+
+    return redirect('admin_category_list')
