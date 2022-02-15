@@ -8,6 +8,8 @@ class AdministrationLinks(AbstractAdministrationLinks):
     def __init__(self):
         self.add_menu('Système')
         self.add_link('Système', 'Liste des comptes', 'admin_account_list')
+        self.add_link('Système', 'Liste des transactions', 'admin_transaction_list')
+        self.add_link('Système', 'Liste des catégories', 'admin_category_list')
 
 
 class AccountAdmin(admin.ModelAdmin):
