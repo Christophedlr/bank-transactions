@@ -224,3 +224,11 @@ def admin_transaction_delete(request, id):
     Transaction.objects.get(id=id).delete()
 
     return redirect('admin_transaction_list')
+
+
+def admin_category_list(request):
+    categories = Category.objects.all()
+
+    return render(request, 'system/administration/category_list.html', {
+        'categories': categories,
+    })
